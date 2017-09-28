@@ -15,6 +15,26 @@ public class XORTableGeneratorBuilder {
         return this;
     }
 
+    public XORTableGeneratorBuilder withRangeStart(int rangeStart) {
+        XORTableGenerator.setRangeStart(rangeStart);
+        return this;
+    }
+
+    public XORTableGeneratorBuilder withRangeEnd(int rangeEnd) {
+        XORTableGenerator.setRangeEnd(rangeEnd);
+        return this;
+    }
+
+    public XORTableGeneratorBuilder withStepSize(int stepSize) {
+        XORTableGenerator.setStepSize(stepSize);
+        return this;
+    }
+
+    public XORTableGeneratorBuilder withBitShift(int bitShift) {
+        XORTableGenerator.setBitShift(bitShift);
+        return this;
+    }
+
     public XORTableGenerator build() {
         return XORTableGenerator;
     }

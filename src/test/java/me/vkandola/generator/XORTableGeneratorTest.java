@@ -34,11 +34,21 @@ public class XORTableGeneratorTest {
 
     @Test
     public void test__can_set_XOR_mask() {
+        int XORMaskToTest = Integer.MAX_VALUE;
         XORTableGenerator tg = new XORTableGeneratorBuilder()
-                .withXORMask(Integer.MAX_VALUE)
+                .withXORMask(XORMaskToTest)
                 .build();
 
-        assertEquals(Integer.MAX_VALUE, tg.getXORMask());
+        assertEquals(XORMaskToTest, tg.getXORMask());
+        assertNothingPrinted();
+    }
+
+    @Test
+    public void test__has_sane_default_XOR_mask() {
+        XORTableGenerator tg = new XORTableGeneratorBuilder()
+                .build();
+
+        assertEquals(0, tg.getXORMask());
         assertNothingPrinted();
     }
 

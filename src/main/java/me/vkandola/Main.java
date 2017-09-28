@@ -9,9 +9,10 @@ public class Main {
 
     // Option constant defines
     private static final String OPT_XOR_TABLE = "xt";
-    private static final String OPT_START_RANGE = "re";
-    private static final String OPT_END_RANGE = "rs";
+    private static final String OPT_RANGE_START = "rs";
+    private static final String OPT_RANGE_END = "re";
     private static final String OPT_BITSHIFT = "bs";
+    private static final String OPT_STEP_SIZE = "st";
     private static final String OPT_XOR_MASK = "m";
     private static final String OPT_SILENT = "s";
     private static final String OPT_FILE = "f";
@@ -28,9 +29,10 @@ public class Main {
 
         // TODO - Implement these basic options
         opts.addOption(OPT_XOR_TABLE, false, "Generate a XOR table.");
-        //opts.addOption(OPT_START_RANGE, true, "Starting range for iterated values.");
-        //opts.addOption(OPT_END_RANGE, true, "Ending range for iterated values.");
-        //opts.addOption(OPT_BITSHIFT, true, "Number of places to bit shift the iterated values.");
+        opts.addOption(OPT_RANGE_START, true, "Starting range for iterated values.");
+        opts.addOption(OPT_RANGE_END, true, "Ending range for iterated values.");
+        opts.addOption(OPT_BITSHIFT, true, "Number of places to bit shift the iterated values.");
+        opts.addOption(OPT_STEP_SIZE, true, "Step size for range iteration.");
         opts.addOption(OPT_XOR_MASK, true, "Inputted XOR mask to use.");
         //opts.addOption(OPT_SILENT, false, "Suppress standard out printing (useful if printing to file instead).");
         //opts.addOption(OPT_FILE, true, "Print results to file.");
@@ -81,7 +83,19 @@ public class Main {
 
             try {
                 if (cmd.hasOption(OPT_XOR_MASK)) {
-                    tgb.withXORMask(Integer.parseInt(cmd.getOptionValue(OPT_XOR_MASK)));
+                    tgb.withXORMask(Integer.parseUnsignedInt(cmd.getOptionValue(OPT_XOR_MASK)));
+                }
+                if (cmd.hasOption(OPT_RANGE_START)) {
+                    tgb.withRangeStart(Integer.parseInt(cmd.getOptionValue(OPT_RANGE_START)));
+                }
+                if (cmd.hasOption(OPT_RANGE_END)) {
+                    tgb.withRangeEnd(Integer.parseInt(cmd.getOptionValue(OPT_RANGE_END)));
+                }
+                if (cmd.hasOption(OPT_STEP_SIZE)) {
+                    tgb.withStepSize(Integer.parseInt(cmd.getOptionValue(OPT_STEP_SIZE)));
+                }
+                if (cmd.hasOption(OPT_BITSHIFT)) {
+                    tgb.withBitShift(Integer.parseInt(cmd.getOptionValue(OPT_BITSHIFT)));
                 }
             } catch (NumberFormatException nfe) {
                 displayHelp(opts);
