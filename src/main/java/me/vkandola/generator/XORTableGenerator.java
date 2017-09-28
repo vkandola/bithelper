@@ -5,7 +5,7 @@ package me.vkandola.generator;
  */
 public class XORTableGenerator extends TableGenerator {
     // XOR Mask to use.
-    private int XORMask;
+    private int XORMask = 0;
 
     protected XORTableGenerator() {
         // Only allow the builder to instantiate this object.

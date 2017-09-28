@@ -75,12 +75,26 @@ public class Main {
             displayHelp(opts);
         }
 
+        TableGenerator tg = null;
         if (hasXORTable) {
-            TableGenerator tg = new XORTableGeneratorBuilder()
-                    .build();
+            XORTableGeneratorBuilder tgb = new XORTableGeneratorBuilder();
 
-            tg.generate();
-            System.exit(0);
+            try {
+                if (cmd.hasOption(OPT_XOR_MASK)) {
+                    tgb.withXORMask(Integer.parseInt(cmd.getOptionValue(OPT_XOR_MASK)));
+                }
+            } catch (NumberFormatException nfe) {
+                displayHelp(opts);
+            }
+
+            tg = tgb.build();
+        } else {
+            displayHelp(opts);
         }
+
+
+        tg.generate();
+
+        System.exit(0);
     }
 }
