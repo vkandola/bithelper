@@ -1,7 +1,5 @@
 package me.vkandola.generator;
 
-import me.vkandola.generator.XORTableGenerator;
-
 /**
  * Builder for XORTableGenerator.
  */
