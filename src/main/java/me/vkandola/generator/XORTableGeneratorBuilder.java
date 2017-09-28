@@ -10,6 +10,11 @@ public class XORTableGeneratorBuilder {
         XORTableGenerator = new XORTableGenerator();
     }
 
+    public XORTableGeneratorBuilder withXORMask(int XORMask) {
+        XORTableGenerator.setXORMask(XORMask);
+        return this;
+    }
+
     public XORTableGenerator build() {
         return XORTableGenerator;
     }
