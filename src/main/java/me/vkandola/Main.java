@@ -1,5 +1,7 @@
 package me.vkandola;
 
+import me.vkandola.generator.TableGenerator;
+import me.vkandola.generator.XORTableGeneratorBuilder;
 import org.apache.commons.cli.*;
 
 public class Main {
@@ -7,13 +9,14 @@ public class Main {
 
     /**
      * Generates the command line options usable.
+     *
      * @return The generated Options object.
      */
     private static Options setupOptions() {
         Options opts = new Options();
 
         // TODO - Implement these basic options
-        //opts.addOption("xt", false, "Generate a XOR table.");
+        opts.addOption("xt", false, "Generate a XOR table.");
         //opts.addOption("s", true, "Starting range for iterated values.");
         //opts.addOption("e", true, "Ending range for iterated values.");
         //opts.addOption("bs", true, "Number of places to bit shift the iterated values.");
@@ -28,6 +31,7 @@ public class Main {
 
     /**
      * Displays the usage of the command line and exits the system.
+     *
      * @param opts The Options configured.
      */
     private static void displayHelp(Options opts) {
@@ -38,6 +42,7 @@ public class Main {
 
     /**
      * Entrypoint into the bithelper program.
+     *
      * @param args Command line arguments to parse.
      */
     public static void main(String[] args) {
@@ -52,10 +57,19 @@ public class Main {
             displayHelp(opts);
         }
 
-        if (cmd.hasOption("h") /* || !(cmd.hasOption("xt") || ...) */) {
+        boolean hasHelp = cmd.hasOption("h");
+        boolean hasXORTable = cmd.hasOption("xt");
+
+        if (hasHelp || !(hasXORTable)) {
             displayHelp(opts);
         }
 
-        // TODO - Parse cmd
+        if (hasXORTable) {
+            TableGenerator tg = new XORTableGeneratorBuilder()
+                    .build();
+
+            tg.generate();
+            System.exit(0);
+        }
     }
 }
