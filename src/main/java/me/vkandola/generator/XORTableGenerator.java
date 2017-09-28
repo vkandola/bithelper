@@ -23,12 +23,12 @@ public class XORTableGenerator extends TableGenerator {
      * Generates the XOR table.
      */
     public void generate() {
-        System.out.printf("%-8s | %-11s | %-11s | %-32s\n", "Hex", "Integer", "Unsigned", "Binary");
+        System.out.printf("%-10s | %-11s | %-11s | %-32s\n", "Hex", "Integer", "Unsigned", "Binary");
         String separator = new String(new char[80]).replace('\0', '-');
         System.out.println(separator);
         for (int i = rangeStart; i < rangeEnd; i += stepSize) {
             int maskedAndShiftedValue = XORMask ^ (i << bitShift);
-            System.out.printf("%8x | %11d | %11d | %32s\n",
+            System.out.printf("0x%8X | %11d | %11d | %32s\n",
                     maskedAndShiftedValue,
                     maskedAndShiftedValue,
                     maskedAndShiftedValue & 0xFFFFFFFFL,
