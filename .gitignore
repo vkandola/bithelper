@@ -1,3 +1,7 @@
+# Vi(m) files...
+*.swp
+*~
+
 ## Java - https://raw.githubusercontent.com/github/gitignore/master/Java.gitignore
 
 # Compiled class file
