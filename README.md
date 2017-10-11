@@ -1,10 +1,27 @@
 # Bit Helper
 A command line utility program for some common bit operations I've needed.
 
+# Current functionality
+- Generating XOR table with 4 representations. Supports bit shifted range iteration and bounds.
+- (WIP) Generating Hex/Bit quiz questions for practice with fundamentals.
 
-# Sample Usage
+# Usage
 
-## XOR Table
+```
+usage: bithelper
+<quizzes>
+ -qb         Begin a binary quiz game.
+ -qh         Begin a hex quiz game.
+<tables>
+ -xt         Generate a XOR table
+ -bs <arg>   Number of places to bit shift the iterated values.
+ -m <arg>    Inputted XOR mask to use.
+ -re <arg>   Ending range for iterated values.
+ -rs <arg>   Starting range for iterated values.
+ -st <arg>   Step size for range iteration.
+```
+
+## Sample of XOR Table
 
 Command executed:
 

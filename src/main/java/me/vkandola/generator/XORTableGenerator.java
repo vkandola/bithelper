@@ -22,6 +22,7 @@ public class XORTableGenerator extends TableGenerator {
     /**
      * Generates the XOR table.
      */
+    @Override
     public void generate() {
         System.out.printf("%-10s | %-11s | %-11s | %-32s\n", "Hex", "Integer", "Unsigned", "Binary");
         String separator = new String(new char[80]).replace('\0', '-');
